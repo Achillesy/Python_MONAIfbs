@@ -50,11 +50,12 @@ Change to the downloaded directory and install all Python and Pytorch dependenci
 ## Training
 A python script was developed to train a [dynUNet][dynUnettutorial] model using [MONAI][monai]. 
 dynUNet 基于 [nnU-Net][nnunet] 方法，该方法采用一系列启发式规则来从训练集中确定最佳内核大小，步幅和网络深度。
-The available script trains a 2D dynUNet by randomly sampling 2D slices from the training set. By default, Dice + Cross 
-Entropy is used as loss function (other options are available).   
-Validation during training is also performed: a 
-whole-volume validation strategy is applied (using a 2D sliding-window approach throughout each 3D image) and 
-Mean 3D Dice Score over the validation set is used as metric for best model selection.
+
+可用脚本从训练集随机抽样二维切片来训练二维dynUNet。 
+默认情况下，Dice + Cross 熵用作损失函数（有其他选项可用）。
+
+应用了整体验证策略：
+（在每个3D图像中使用2D滑动窗口方法），并且验证集上的平均3D骰子得分用作最佳模型选择的指标。
 
 #### Setting the training to run
 
@@ -116,16 +117,13 @@ This folder contains:
 
 
 *Notes on the persistent cache*: 
-1. The persistent cache dataset favours reusability of pre-processed data when multiple runs need to be executed 
-(e.g. for hyperparameters tuning). To change the location of this persistent cache or to re-use a pre-existing cache, 
+1. 当需要多次运行时，持久性高速缓存数据集有利于预处理数据的可重用性（例如，用于超参数调整）。
+To change the location of this persistent cache or to re-use a pre-existing cache, 
 the option `--cache_dir <path-to-persistent-cache>` can be used in the command line for setting the training to run. 
-2. The persistent cache can take up quite some large amount of storage space, depending on the size of the training set
-and on the selected patch size for training (Example: with about 400 3D volumes and default patch size (418, 512), 
-it took about 30G).
-3. Alternate solutions to the PersistentCache exist which do not use this much storage space, but are not currently 
-implemented in the training script. See this [MONAI tutorial][monai_datasets] for more information. 
-To integrate other MONAI Datasets into the script, change the `train_ds` and `val_ds` definitions 
-in `src/train/monai_dynunet_training.py`.
+2. 持久性缓存可能会占用相当大量的存储空间，具体取决于训练集的大小和选择用于训练的补丁大小
+（例如：具有约400个3D卷和默认补丁大小（418、512），大约需要30G）。
+3. 有PersistentCache的替代解决方案，可以不使用这么大的存储空间，但是目前还未在训练脚本中实施。 有关更多信息，请参见此[MONAI tutoria] [monai_datasets]。
+要将其他 MONAI Datasets 集成到脚本中，请更改在`src / train / monai_dynunet_training.py`中`train_ds`和`val_ds`的定义。
 
 ## Inference
 **Note** If using the provided pre-trained model, please make sure you have downloaded it and placed it as expected in 

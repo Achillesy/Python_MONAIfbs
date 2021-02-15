@@ -49,9 +49,7 @@ Change to the downloaded directory and install all Python and Pytorch dependenci
 
 ## Training
 A python script was developed to train a [dynUNet][dynUnettutorial] model using [MONAI][monai]. 
-The dynUNet is based on the [nnU-Net][nnunet] approach, which employs a series of heuristic rules to determine
-the optimal kernel sizes, strides and network depth from the training set. 
- 
+dynUNet 基于 [nnU-Net][nnunet] 方法，该方法采用一系列启发式规则来从训练集中确定最佳内核大小，步幅和网络深度。
 The available script trains a 2D dynUNet by randomly sampling 2D slices from the training set. By default, Dice + Cross 
 Entropy is used as loss function (other options are available).   
 Validation during training is also performed: a 

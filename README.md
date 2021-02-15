@@ -123,7 +123,7 @@ the option `--cache_dir <path-to-persistent-cache>` can be used in the command l
 2. 持久性缓存可能会占用相当大量的存储空间，具体取决于训练集的大小和选择用于训练的补丁大小
 （例如：具有约400个3D卷和默认补丁大小（418、512），大约需要30G）。
 3. 有PersistentCache的替代解决方案，可以不使用这么大的存储空间，但是目前还未在训练脚本中实施。 有关更多信息，请参见此[MONAI tutoria] [monai_datasets]。
-要将其他 MONAI Datasets 集成到脚本中，请更改在`src / train / monai_dynunet_training.py`中`train_ds`和`val_ds`的定义。
+要将其他 MONAI Datasets 集成到脚本中，请更改在`src/train/monai_dynunet_training.py`中`train_ds`和`val_ds`的定义。
 
 ## Inference
 **Note** If using the provided pre-trained model, please make sure you have downloaded it and placed it as expected in 
